@@ -22,21 +22,34 @@ function listarTarefas() {
    
 }
 
-function addTarefa () {
-    event.preventDefault();
 
+function addTarefa () {
+    carregaLista();
+    event.preventDefault();
+    
     let tarefa = document.getElementById('input_nova_tarefa').value;
 
+    
+
     if (tarefa.trim() === "") {
-    alert('Tarefa invalida');
+        alert('Tarefa invalida');
+        return false
     }
 
-    if (lista_tarefas.includes(tarefas) === true) {
-        alert('Tarefa já existe');
+    var check = false;
+    lista_tarefas.map( (item) => {
+        if (item.titulo.includes(tarefa)) {
+            check = true;
+        }
+    });
 
+    
+    if(check) {
+        alert('Tarefa invalida')
         return;
     }
-
+    
+    
     salvar(tarefa,input_prioridade.value)
 
     document.getElementById('input_nova_tarefa').value = '';
@@ -45,5 +58,8 @@ function addTarefa () {
 
     listarTarefas();
 }
+
+// chamada do console ele nao passava pelo addTarefa, chamei a função ele roda porém apresenta o erro PreventDefault
+addTarefa();
 
 listarTarefas();
