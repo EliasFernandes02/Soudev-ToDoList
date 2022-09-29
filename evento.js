@@ -59,7 +59,7 @@ function addTarefa () {
     listarTarefas();
 }
 
-// chamada do console ele nao passava pelo addTarefa, chamei a função ele roda porém apresenta o erro PreventDefault
+
 addTarefa();
 
 listarTarefas();
